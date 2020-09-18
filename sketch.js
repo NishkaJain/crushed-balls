@@ -19,9 +19,10 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	ball = createSprite (70,350,PI/3);
+
 	
 	ground = new Ground(600,height,1200,20);
+	ball = new Ball (70,200,20);
 
 	log1 = createSprite(815,385,150,15);
 	log1.shapeColor ="yellow";
@@ -40,8 +41,8 @@ function draw() {
   background(0);
 
   
-  ellipseMode(RADIUS);
-  ellipse(ball.position.x,ball.position.y,20,20);
+  //ellipseMode(RADIUS);
+  //ellipse(ball.position.x,ball.position.y,20,20);
 
   ball.display();
   log1.display();
@@ -53,11 +54,12 @@ function draw() {
  
 }
 
-function keyPresssed(){
-	if (keyCode === UP_ARROW){
-		matter.body.Ball(ball.body,ball.body.position,{x:85,y:85})
-	}
-}
+function keyPressed() {
+  	if (keyCode === UP_ARROW) {
 
+    	Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
+    
+  	}
+}
 
 
