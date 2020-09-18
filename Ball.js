@@ -1,19 +1,24 @@
 class Ball {
-    constructor(x, y) {
+    constructor(x, y, r) {
       var options = {
-      'restitution':1.5
+		isStatic:false,
+		restitution:0.3,
+		friction:0.5,
+		density:1.2
       }
         
-      ball = Bodies.circle(200,100,20,ball_options);
-      ball.shapeColor = "yellow";
+      this.body = Bodies.circle(x,y,r,options);
+	  this.x=x;
+	  this.y=y;
+	  this.r=r
       World.add(world, this.body);
     }
     display(){
       var pos = this.body.position;
+      fill("red");
+	  ellipseMode(RADIUS);
+	  ellipse(pos.x,pos.y,this.r,this.r);
       
-    ellipseMode(RADIUS);
-    ellipse(ball.position.x,ball.position.y,20,20);
-      stroke("red");
       }
     };
   
